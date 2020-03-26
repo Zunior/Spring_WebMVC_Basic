@@ -19,8 +19,8 @@ import rs.engineering.javacourse.springMvcConfigurationDomaci03.service.UserServ
 
 @Controller
 @RequestMapping(value = "/users")
-public class UserController{
-	
+public class UserController {
+
 	@Autowired
 	UserService userService;
 
@@ -28,22 +28,24 @@ public class UserController{
 	public User User() {
 		return new User("-", "-", "-", "-");
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET)
-	protected ModelAndView home(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	protected ModelAndView home(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		userService.getAll();
+		List<User> users = userService.getAll();
+		request.setAttribute("users", users);
+		System.out.println("Izvadjeni korisnici");
 		ModelAndView modelAndView = new ModelAndView("user/users");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	protected ModelAndView add(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+	protected ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("user/addUser");
 		request.setAttribute("info", "Atribut info: dodajte korisnika");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	protected ModelAndView save(@ModelAttribute(name = "user") User user) {
 		userService.save(user);
@@ -53,19 +55,5 @@ public class UserController{
 //		return "redirect:/user/add"
 		return modelAndView;
 	}
-	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	protected ModelAndView getAll(HttpServletRequest request, HttpServletResponse response) {
-		userService.getAll();
-		List<User> users = userService.getAll();
-		request.setAttribute("users", users);
-		ModelAndView modelAndView = new ModelAndView("user/users");
-//		modelAndView.addObject("info", "Objekat info: korisnik je dodat");
-		System.out.println("Izvadjeni korisnici");
-		return modelAndView;
-	}
-	
-	
-	
-	
+
 }

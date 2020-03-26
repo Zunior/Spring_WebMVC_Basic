@@ -14,6 +14,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th>Id:</th>
 				<th>Firstname</th>  
 				<th>Lastname</th>
 				<th>Username</th>
@@ -23,6 +24,7 @@
 			<tbody>
 				<c:forEach items="${users}" var="user">
 					<tr>
+						<td><p>${user.getId()}</p><br/></td>
 						<td><p>${user.getFirstname()}</p><br/></td>
 						<td><p>${user.getLastname()}</p><br/></td>
 						<td><p>${user.getUsername()}</p><br/></td>

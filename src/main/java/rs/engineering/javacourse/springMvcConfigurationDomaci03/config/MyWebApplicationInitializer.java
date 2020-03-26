@@ -6,11 +6,13 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import rs.engineering.javacourse.springMvcConfigurationDomaci03.dto.User;
+import rs.engineering.javacourse.springMvcConfigurationDomaci03.service.UserService;
 
 public class MyWebApplicationInitializer implements WebApplicationInitializer {
 
@@ -19,20 +21,20 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
 		System.out.println("======================================================");
 		System.out.println("============= MyWebApplicationInitializer ============");
 		System.out.println("======================================================");
-		
-		servletContext.setAttribute("users", new ArrayList<User>() {
-			{
-				add(new User("Pera", "Peric", "pera", "123"));
-				add(new User("Zika", "Zikic", "zika", "123"));
-			}
-		});
-		
+
+//		servletContext.setAttribute("users", new ArrayList<User>() {
+//			{
+//				add(new User("Pera", "Peric", "pera", "123"));
+//				add(new User("Zika", "Zikic", "zika", "123"));
+//			}
+//		});
+
 		AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
 		webApplicationContext.register(MyWebContextConfig.class);
 		webApplicationContext.setServletContext(servletContext);
-		
-		ServletRegistration.Dynamic dispatcherServlet = servletContext
-					.addServlet("myServletDispatcherContext", new DispatcherServlet(webApplicationContext));
+
+		ServletRegistration.Dynamic dispatcherServlet = servletContext.addServlet("myServletDispatcherContext",
+				new DispatcherServlet(webApplicationContext));
 		dispatcherServlet.addMapping("/");
 		dispatcherServlet.setLoadOnStartup(1);
 	}
