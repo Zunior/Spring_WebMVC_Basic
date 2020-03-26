@@ -29,6 +29,18 @@
 					</td>
 				</tr>
 				<tr>
+					<td>Username:</td>
+					<td>
+						<form:input path="username" id="username" />
+					</td>
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td>
+						<form:input path="password" id="password" />
+					</td>
+				</tr>
+				<tr>
 					<td>
 						<button id="save">Save</button>
 					</td>

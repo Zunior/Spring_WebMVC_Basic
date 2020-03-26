@@ -13,15 +13,37 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>5.2.4.RELEASE</spring.version>
+        <mysql.driver.version>8.0.19</mysql.driver.version>
     </properties>
     
     <dependencies>
     
-    <dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-webmvc</artifactId>
-		    <version>${spring.version}</version>
-		</dependency>
+	    <dependency>
+			    <groupId>org.springframework</groupId>
+			    <artifactId>spring-webmvc</artifactId>
+			    <version>${spring.version}</version>
+			</dependency>
+			
+			<!--  spring IoC -->
+	  	<dependency>
+	  		<groupId>org.springframework</groupId>
+	  			<artifactId>spring-context</artifactId>
+	  		<version>${spring.version}</version>
+	  	</dependency>
+  	
+  	<!--  spring jdbc -->
+	  	<dependency>
+	  		<groupId>org.springframework</groupId>
+	  			<artifactId>spring-jdbc</artifactId>
+	  		<version>${spring.version}</version>
+	  	</dependency>
+	  	
+	  	<!--  mysql driver -->
+	  	<dependency>
+		  <groupId>mysql</groupId>
+		  <artifactId>mysql-connector-java</artifactId>
+		  <version>${mysql.driver.version}</version>
+		 </dependency>
 		
 		<dependency>
 		    <groupId>javax.servlet</groupId>

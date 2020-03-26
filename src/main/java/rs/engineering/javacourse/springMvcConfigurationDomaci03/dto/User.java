@@ -2,14 +2,15 @@ package rs.engineering.javacourse.springMvcConfigurationDomaci03.dto;
 
 import java.io.Serializable;
 
-public class User implements Serializable{
+public class User implements Serializable {
+	private Long id;
 	private String firstname;
 	private String lastname;
 	private String username;
 	private String password;
-	
+
 	public User() {
-		
+
 	}
 
 	public User(String firstname, String lastname, String username, String password) {
@@ -18,6 +19,14 @@ public class User implements Serializable{
 		this.lastname = lastname;
 		this.username = username;
 		this.password = password;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstname() {
@@ -54,8 +63,10 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [firstname=" + firstname + ", lastname=" + lastname + ", username=" + username + "]";
+		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", username=" + username
+				+ "]";
 	}
+
 	
-	
+
 }
