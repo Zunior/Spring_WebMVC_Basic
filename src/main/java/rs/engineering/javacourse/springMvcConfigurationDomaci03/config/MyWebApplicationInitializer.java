@@ -22,13 +22,6 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
 		System.out.println("============= MyWebApplicationInitializer ============");
 		System.out.println("======================================================");
 
-//		servletContext.setAttribute("users", new ArrayList<User>() {
-//			{
-//				add(new User("Pera", "Peric", "pera", "123"));
-//				add(new User("Zika", "Zikic", "zika", "123"));
-//			}
-//		});
-
 		AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
 		webApplicationContext.register(MyWebContextConfig.class);
 		webApplicationContext.setServletContext(servletContext);

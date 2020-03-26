@@ -9,6 +9,13 @@
 <title>Users</title>
 </head>
 <body>
+
+	<c:set value="${pageContext.request.contextPath}" var="contextPath"></c:set>
+	<c:url var="deleteUserURL" value="/users/delete"/>
+
+	<jsp:include page="home.jsp"></jsp:include>
+	<br />
+
 	Lista usera:
 	<br />
 	<table>
@@ -18,7 +25,8 @@
 				<th>Firstname</th>  
 				<th>Lastname</th>
 				<th>Username</th>
-				<th>Password</th> 
+				<th>Password</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 			<tbody>
@@ -29,6 +37,12 @@
 						<td><p>${user.getLastname()}</p><br/></td>
 						<td><p>${user.getUsername()}</p><br/></td>
 						<td><p>${user.getPassword()}</p><br/></td>
+						<td>
+							<form method="post" action="<c:out value="${deleteUserURL}" />">
+								<input type = "hidden" id="id" name = "id" value = "${user.getId()}" />
+								<input type = "submit" value="delete"/>
+							</form>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

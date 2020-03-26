@@ -56,4 +56,9 @@ public class UserJdbcRepository implements UserRepository {
 		}
 	}
 
+	@Override
+	public void deleteById(Long id) {
+		jdbcTemplate.update("DELETE FROM user WHERE id = ?", id);
+	}
+
 }

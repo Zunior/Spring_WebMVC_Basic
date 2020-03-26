@@ -12,6 +12,9 @@
 
 	<c:set value="${pageContext.request.contextPath}" var="contextPath"></c:set>
 	
+	<jsp:include page="home.jsp"></jsp:include>
+	<br />
+	
 	${info }
 	<form:form action="${contextPath}/users/save" method = "post" modelAttribute="user">
 		<table>
