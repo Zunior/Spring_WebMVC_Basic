@@ -24,24 +24,24 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@ModelAttribute(name = "user")
-	public User User() {
-		return new User("-", "-", "-", "-");
-	}
+//	@ModelAttribute(name = "user")
+//	public User User() {
+//		return new User("-", "-", "-", "-");
+//	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	protected ModelAndView home(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		userService.getAll();
 		List<User> users = userService.getAll();
-		request.setAttribute("users", users);
 		System.out.println("Izvadjeni korisnici");
 		ModelAndView modelAndView = new ModelAndView("user/users");
+		modelAndView.addObject("users", users);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	protected ModelAndView add(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("user/addUser");
+		modelAndView.addObject("user", new User("-", "-", "-", "-"));
 		request.setAttribute("info", "Atribut info: dodajte korisnika");
 		return modelAndView;
 	}
